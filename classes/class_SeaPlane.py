@@ -2,7 +2,12 @@ from ursina import Entity, color, Vec3
 from ursina.shaders import lit_with_shadows_shader
 
 class SeaPlane(Entity):
-    def __init__(self):
+    def __init__(
+        self,
+        position=Vec3(0, 0, 0),
+        rotation=Vec3(0, 0, 0),
+        **kwargs
+        ):
         super().__init__(
             model='plane',
             texture='white_cube',
@@ -11,5 +16,9 @@ class SeaPlane(Entity):
             rotation=Vec3(0, 0, 0),
             position=Vec3(0, 0, 0),
             collider="box",
-            shader=lit_with_shadows_shader
+            shader=lit_with_shadows_shader,
+            **kwargs
             )
+
+        self.position = position
+        self.rotation = rotation

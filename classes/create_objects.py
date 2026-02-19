@@ -1,50 +1,24 @@
 from ursina import Vec3, color, Text
 
-from string import ascii_letters
-
 from .class_SeaPlane import SeaPlane
 from .class_GridOverlay import GridOverlay
 from .class_CoordinateText import CoordinateText
+from .class_NavButton import NavButton
 
 
-sea_plane = SeaPlane()
-grid_overlay = GridOverlay(10, 10, color=color.black, position=Vec3(0, .002, 0))
-lower_grid = GridOverlay(12, 12, color=color.rgba(0, 0, 0, 0.1), position=Vec3(0, -.002, 0))
 
-letters_list = [ascii_letters[i] for i in range(10)]
-digits_list = [str(i) for i in range(1, 11)]
+my_water_area = SeaPlane()
+my_grid_overlay = GridOverlay(10, 10, color=color.black, position=Vec3(0, .002, 0))
+my_lower_grid = GridOverlay(12, 12, color=color.rgba(0, 0, 0, 0), position=Vec3(0, -.002, 0))
+
+my_coordinates = CoordinateText(my_lower_grid)
 
 
-for i in range(1, 11):
 
-    CoordinateText(
-        model=Text(
-            text=letters_list[i - 1]
-        ),
-        scale=20,
-        rotation=Vec3(90, 0, 0)
-    ).position = lower_grid.map_position_cells[(i, 11)]
+enemy_water_area = SeaPlane(position=Vec3(-18, 0, 0))
+enemy_grid_overlay = GridOverlay(10, 10, color=color.black, position=Vec3(-18, .002, 0))
+enemy_lower_grid = GridOverlay(12, 12, color=color.rgba(0, 0, 0, 0), position=Vec3(-18, -.002, 0))
 
-    CoordinateText(
-        model=Text(
-            text=letters_list[i - 1]
-        ),
-        scale=20,
-        rotation=Vec3(90, 0, 0)
-    ).position = lower_grid.map_position_cells[(i, 0)]
+enemy_coordinates = CoordinateText(enemy_lower_grid)
 
-    CoordinateText(
-        model=Text(
-            text=digits_list[i - 1]
-        ),
-        scale=20,
-        rotation=Vec3(90, 0, 0)
-    ). position = lower_grid.map_position_cells[(0, i)]
-
-    CoordinateText(
-        model=Text(
-            text=digits_list[i - 1]
-        ),
-        scale=20,
-        rotation=Vec3(90, 0, 0)
-    ). position = lower_grid.map_position_cells[(11, i)]
+nav_button = NavButton(position=Vec3(-1, .4, 0))
