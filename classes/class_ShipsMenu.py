@@ -42,6 +42,8 @@ class ShipsMenu(Entity):
             ships_creator.model = self.model.name
             ships_creator.texture = self.texture
             ships_creator.water = self.water
+            ships_creator.scale = self.scale
+            ships_creator.rotation = self.rotation
             ships_creator.create_ship_command = True
 
         if self.ship_counter <= 0:

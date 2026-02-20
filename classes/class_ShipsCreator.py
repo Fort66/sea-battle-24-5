@@ -17,6 +17,9 @@ class ShipsCreator:
         self.deck_count = 0
         self.model = None
         self.texture = None
+        self.scale = None
+        # self.position = None
+        self.rotation = None
         self.ships = []
 
     def update(self):
@@ -25,9 +28,9 @@ class ShipsCreator:
                 Ships(
                     model=self.model,
                     texture=self.texture,
-                    scale=.015,
+                    scale=self.scale,
                     position=Vec3(0, 0, 0),
-                    rotation=Vec3(0, 0, 0),
+                    rotation=self.rotation,
                     deck_amount=0,
                 )
             )
@@ -36,3 +39,5 @@ class ShipsCreator:
             self.deck_count = 0
             self.model = None
             self.texture = None
+            self.scale = None
+            self.rotation = None

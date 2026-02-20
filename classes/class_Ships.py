@@ -41,11 +41,11 @@ class Ships(Entity):
                 self.is_selected = True
 
         if key == 'left mouse up':
-            self.following_mouse = True
-            self.is_selected = True
+            self.following_mouse = False
+            self.is_selected = False
 
         if key == 'right mouse down' and self.is_selected:
-            self.rotation += Vec3(90, 0, 0)
+            self.rotation += Vec3(0, 90, 0)
 
     def update(self):
         if self.following_mouse:
